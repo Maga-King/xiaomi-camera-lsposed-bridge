@@ -1,5 +1,9 @@
 # 小米相机 LSPosed 修复与徕卡本地处理研究
 
+[![构建完整 APK](https://github.com/Maga-King/xiaomi-camera-lsposed-bridge/actions/workflows/build.yml/badge.svg)](https://github.com/Maga-King/xiaomi-camera-lsposed-bridge/actions/workflows/build.yml)
+
+[下载完整云端 APK](https://github.com/Maga-King/xiaomi-camera-lsposed-bridge/releases/tag/native-r17-ci) · [下载全部构建素材](https://github.com/Maga-King/xiaomi-camera-lsposed-bridge/releases/tag/native-r17-materials)
+
 归档我们在欧加硬件、移植系统上修复小米相机的 Java / C++ / Smali 源码。保留小米 UI，通过 LSPosed、欧加拍摄兼容桥和独立 native worker 接入图像处理。
 
 **找到的最后一轮部署产物：2026-09-09 的 `native-r17`，包名 `local.mio.os4camerabridge`，versionCode 202，versionName `0.4.92-live-photo-r17`。**
@@ -53,6 +57,8 @@
 这里的构建真值是最终 r17 Smali，不是未同步的 Gradle 187 工程，也不是改个文件名上传旧 APK。工作流会检查必要闭源资源存在且未意外改变。
 
 主仓库使用 GitHub Secrets 中独立的 CI 签名，私钥不进 Git 或 Release；Fork 未配置签名 Secret 时会生成临时签名，可安装但下次可能不能覆盖。CI 签名与历史本地签名不同，安装方式和设备要求见 [使用说明](docs/使用说明.md)。
+
+首轮完整成功记录：[Actions 36461817036](https://github.com/Maga-King/xiaomi-camera-lsposed-bridge/actions/runs/36461817036)。云端实际完成 368 个类重组、native 编译、资源保留校验与签名对齐；本次发布没有操作手机或宣称新的实拍回归。
 
 历史作用域声明包含 `com.android.camera`、`com.oplus.camera` 和 `com.miui.mediaeditor`，用于不同阶段的研究。发布脚本不会替使用者勾选手机上的作用域；不要无差别全选。复用本研究时必须审计 HookEntry 的实际包名分支与设备条件，一加相机共存也要实机回归。
 
