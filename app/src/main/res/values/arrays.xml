@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="module_scope">
+        <item>com.android.camera</item>
+        <item>com.oplus.camera</item>
+        <item>com.miui.mediaeditor</item>
+    </string-array>
+</resources>

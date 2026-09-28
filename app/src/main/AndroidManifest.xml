@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <queries><package android:name="com.android.camera" /></queries>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <application
+        android:allowBackup="false"
+        android:hasCode="true"
+        android:forceQueryable="true"
+        android:pageSizeCompat="enabled"
+        android:label="@string/app_name">
+        <meta-data android:name="xposedmodule" android:value="true" />
+        <meta-data android:name="xposedscope" android:resource="@array/module_scope" />
+        <meta-data android:name="xposeddescription" android:value="@string/xposed_desc" />
+        <meta-data android:name="xposedinit" android:value="local.mio.os4camerabridge.HookEntry" />
+        <meta-data android:name="xposedminversion" android:value="93" />
+        <activity android:name=".LegendarySettingsActivity" android:exported="true" android:label="徕卡处理设置">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
+            </intent-filter>
+        </activity>
+        <provider android:name=".LegendaryProcessingProvider" android:authorities="local.mio.os4camerabridge.legend" android:exported="true" android:grantUriPermissions="true" />
+        <receiver android:name=".LegendaryBootReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>
