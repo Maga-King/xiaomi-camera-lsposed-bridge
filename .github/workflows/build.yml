@@ -24,6 +24,9 @@ jobs:
           python -c "import zipfile; zipfile.ZipFile('.materials/XiaomiCameraLSPosed-native-r17-materials.zip').extractall('.materials')"
       - name: 安装匹配 Android 工具链
         uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
       - name: 安装 Build Tools 和 NDK
         run: sdkmanager 'build-tools;36.0.0' 'ndk;28.2.13676358'
       - name: 重编译 Smali 与 native、校验依赖、签名成品
